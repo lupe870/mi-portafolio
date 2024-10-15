@@ -1,0 +1,272 @@
+/* Paleta de colores */
+:root {
+    --color-principal: #FF6F61;  /* Color Principal */
+    --color-secundario: #F7CAC9;  /* Color Secundario */
+    --color-neutro: #F3F4ED;      /* Color Neutro */
+    --color-texto: #333333;       /* Color de Texto */
+    --color-fondo: #ffffff;       /* Color de Fondo */
+    --color-carrusel: #F7E1D7;    /* Color de Fondo del Carrusel */
+    --color-sombra: rgba(0, 0, 0, 0.1); /* Color de Sombra */
+}
+
+/* Reset de estilo */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--color-neutro); /* Color de fondo para toda la página */
+    color: var(--color-texto);
+    min-height: 100vh; /* Asegura que el fondo cubra toda la altura de la página */
+}
+
+/* Estilo del header */
+header {
+    background-color: var(--color-principal);
+    color: white;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 2px 4px var(--color-sombra);
+}
+
+/* Estilo de la navegación */
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 30px;
+    background-color: var(--color-secundario);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+nav ul li a:hover {
+    background-color: white;
+    color: var(--color-principal);
+    transform: scale(1.1);
+}
+
+/* Estilo del menú móvil */
+#mobile-menu {
+    display: none;
+    cursor: pointer;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 25px;
+}
+
+.bar {
+    height: 3px;
+    width: 100%;
+    background-color: white;
+    margin: 2px 0;
+}
+
+/* Mostrar el menú en pantallas pequeñas */
+@media (max-width: 768px) {
+    nav ul {
+        display: none;
+        flex-direction: column;
+        text-align: center;
+        background-color: var(--color-principal);
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+    }
+
+    #mobile-menu {
+        display: flex;
+    }
+
+    nav ul.active {
+        display: flex;
+    }
+}
+
+/* Sección Sobre mí */
+#about {
+    padding: 50px;
+    text-align: center;
+}
+
+/* Estilo de proyectos */
+#projects {
+    padding: 50px 20px;
+    text-align: center;
+    background-color: var(--color-carrusel); /* Color de Fondo del Carrusel */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px var(--color-sombra);
+}
+
+/* Carrusel */
+.carousel {
+    display: flex;
+    justify-content: center; /* Centrar las imágenes */
+    align-items: center;
+    overflow: hidden; /* Esconder el contenido que no esté visible */
+    position: relative; /* Para los botones prev y next */
+    width: 100%;
+}
+
+/* Imagen dentro del carrusel */
+.slide {
+    min-width: 300px; /* Ancho mínimo de la imagen para que no se superpongan */
+    max-width: 100%; /* Para mantener la imagen dentro del contenedor */
+    height: auto; /* Ajuste proporcional de la altura */
+    margin: 0 15px; /* Espacio entre las imágenes */
+    display: block; /* Mantener las imágenes visibles */
+    transition: transform 0.5s ease; /* Añadir una transición suave al cambio de imágenes */
+}
+
+/* Muestra solo la imagen activa */
+.active {
+    display: block;
+    transform: translateX(0); /* La imagen activa no se mueve */
+}
+
+/* Oculta las imágenes no activas */
+.slide:not(.active) {
+    display: none;
+}
+
+/* Botones de navegación (prev y next) */
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 18px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 16px;
+    border-radius: 50%;
+    border: none;
+}
+
+.prev {
+    left: 10px; /* Colocar a la izquierda */
+}
+
+.next {
+    right: 10px; /* Colocar a la derecha */
+}
+
+/* Animación de aparición */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.carousel img {
+    animation: fadeIn 1s ease-in-out;
+}
+.carousel {
+    display: flex;
+    overflow: hidden;
+    max-width: 100%;
+    position: relative; /* Para los controles */
+}
+
+.slide {
+    display: none;
+    width: 100%;
+}
+
+.active {
+    display: block;
+}
+
+/* Controles del carrusel */
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    font-size: 18px;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 16px;
+    color: white;
+    border: none;
+    border-radius: 50%; /* Bordes redondeados */
+    transform: translateY(-50%); /* Centrar verticalmente */
+}
+
+.prev {
+    left: 10px; /* Ajuste de posición */
+}
+
+.next {
+    right: 10px; /* Ajuste de posición */
+}
+
+/* Formulario de Contacto */
+#contact {
+    padding: 50px;
+    text-align: center;
+}
+
+form {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    background-color: var(--color-fondo);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px var(--color-sombra);
+}
+
+form input, form textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 2px solid var(--color-secundario);
+    transition: border-color 0.3s ease;
+}
+
+form input:focus, form textarea:focus {
+    border-color: var(--color-principal);
+}
+
+form button {
+    background-color: var(--color-principal);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    border-radius: 5px; /* Bordes redondeados */
+}
+
+form button:hover {
+    background-color: var(--color-secundario);
+    transform: scale(1.05);
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.carousel img {
+    animation: fadeIn 1s ease-in-out; /* Animación de aparición */
+}
+
+
+
+
+
