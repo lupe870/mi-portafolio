@@ -1,2 +1,2 @@
-# mi-portafolio
+# mi-practicas
 portafolio
