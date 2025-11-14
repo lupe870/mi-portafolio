@@ -1,0 +1,27 @@
+{% extends 'universidad/base.html' %}
+{% block titulo %}Alumnos{% endblock %}
+{% block contenido %}
+<h2 class="text-2xl font-semibold mb-6">Lista de Alumnos</h2>
+<table class="min-w-full bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-xl overflow-hidden shadow-md">
+    <thead class="bg-blue-700 text-white">
+        <tr>
+            <th class="py-3 px-4 text-left">Nombre</th>
+            <th class="py-3 px-4 text-left">Apellido</th>
+            <th class="py-3 px-4 text-left">CI</th>
+            <th class="py-3 px-4 text-left">Carrera</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for a in alumnos %}
+        <tr class="border-t border-gray-300 dark:border-gray-700 hover:bg-blue-50 dark:hover:bg-gray-700">
+            <td class="py-2 px-4">{{ a.nombreestudiante }}</td>
+            <td class="py-2 px-4">{{ a.cod_estudiante }}</td>
+            <td class="py-2 px-4">{{ a.email }}</td>
+            <td class="py-2 px-4">{% if a.Carrera %}{{ a.Carrera.nombrecarrera }}{% else %}No asignada{% endif %}</td>
+        </tr>
+        {% empty %}
+        <tr><td colspan="4" class="text-center py-4 text-gray-500">No hay alumnos registrados.</td></tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends 'universidad/base.html' %}
+{% block titulo %}Carreras{% endblock %}
+{% block contenido %}
+<h2 class="text-2xl font-semibold mb-6">Lista de Carreras</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    {% for c in carreras %}
+    <div class="bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 p-6 rounded-2xl shadow hover:shadow-lg transition">
+        <h3 class="text-xl font-bold text-blue-700 mb-2">{{ c.nombrecarrera }}</h3>
+        <p class="text-gray-600 dark:text-gray-300 mb-2">Código Facultad: {{ c.cod_facultad }}</p>
+        <p class="text-gray-600 dark:text-gray-300 mb-2">Duración (años): {{ c.duracion_años }}</p>
+        <p class="text-sm text-gray-500 dark:text-gray-400">Facultad: {% if c.faculty %}{{ c.faculty.nombrefacultad }}{% else %}No asignada{% endif %}</p>
+        {% if c.faculty.foto.url %}
+            <p class="text-gray-600 dark:text-gray-300 mb-2">foto: {{ c.foto.url }}</p>
+            <img src="{{ c.faculty.foto.url }}" alt="{{ c.nombrefacultad }}" class="rounded-lg">
+        {% else %}
+            <p class="text-gray-600 dark:text-gray-300 mb-2">foto: Sin foto</p>
+            <img src="{{ faculty.foto.url|default:'/media/Universidades/universidad/static/facultad_fotos/default.jpg' }}" alt="Facultad">
+        {% endif %}
+    </div>
+    {% empty %}
+    <p class="text-gray-500 text-center col-span-full">No hay carreras registradas.</p>
+    {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block titulo %}Gestión Universidad{% endblock %}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200 min-h-screen flex flex-col">
+    <nav class="bg-blue-700 text-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+            <h1 class="text-2xl font-semibold">Gestión Universidad</h1>
+            <ul class="flex space-x-6">
+                <li><a href="{% url 'index' %}" class="hover:text-gray-200">Inicio</a></li>
+                <li><a href="{% url 'alumnos' %}" class="hover:text-gray-200">Alumnos</a></li>
+                <li><a href="{% url 'carreras' %}" class="hover:text-gray-200">Carreras</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="flex-1 container mx-auto px-4 py-8">
+        {% block contenido %}
+        {% endblock %}
+    </main>
+
+    <footer class="bg-blue-800 text-white text-center py-4 mt-auto">
+        <p>&copy; 2025 Universidad — Sistema de Gestión</p>
+    </footer>
+</body>
+</html>
